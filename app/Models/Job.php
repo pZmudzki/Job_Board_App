@@ -8,12 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 class Job extends Model
 {
     use HasFactory;
 
     public static array $experience = ['entry', 'intermediate', 'senior'];
     public static array $category = ['IT', 'Finance', 'Sales', 'Marketing'];
+
+    public function employeer(): BelongsTo
+    {
+        return $this->belongsTo(Employer::class);
+    }
 
     public function scopeFilter(Builder | QueryBuilder $query, array $filters): Builder | QueryBuilder
     {

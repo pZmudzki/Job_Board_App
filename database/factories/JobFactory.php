@@ -22,7 +22,7 @@ class JobFactory extends Factory
             'description' => fake()->paragraphs(3, true),
             'salary' => fake()->numberBetween(5_000, 150_000),
             'location' => fake()->city,
-            'category' => fake()->randomElement(Job::$categories),
+            'category' => fake()->randomElement(Job::$category),
             'experience' => fake()->randomElement(Job::$experience)
         ];
     }
