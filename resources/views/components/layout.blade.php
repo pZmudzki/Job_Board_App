@@ -9,8 +9,7 @@
     <title>Job Board</title>
 </head>
 
-<body
-    class="container mx-auto mt-10 max-w-2xl bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 text-slate-700">
+<body class="mx-auto mt-10 max-w-2xl bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 text-slate-700">
     {{$slot}}
 </body>
 
