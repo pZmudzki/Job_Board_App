@@ -10,6 +10,7 @@
 </head>
 
 <body class="mx-auto mt-10 max-w-2xl bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 text-slate-700">
+    {{auth()->user()->name ?? 'Guest'}}
     {{$slot}}
 </body>
 

@@ -16,7 +16,7 @@
         <x-text-input name="password" type="password" placeholder="Password" />
       </div>
 
-      <div class="mb-8 flex justify-between items-center text-sm font-medium">
+      <div class="mb-4 flex justify-between items-center text-sm font-medium">
         <div>
           <div class="flex items-center gap-2">
             <input type="checkbox" name="remember" id="remember" class="rounded-sm border border-slate-400">

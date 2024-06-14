@@ -10,4 +10,4 @@ Route::resource('jobs', JobController::class)->only(['index', 'show']);
 
 
 Route::get('login', fn () => to_route('auth.create'))->name('login');
-Route::resource('auth', AuthController::class)->only(['create', 'store']);
+Route::resource('auth', AuthController::class)->only(['create', 'store', 'destroy']);
