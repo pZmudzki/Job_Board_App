@@ -13,39 +13,40 @@
     <nav class="mb-8 flex justify-between text-lg font-medium">
         <ul class="flex gap-2">
             <li>
-                <a href="{{route('jobs.index')}}">Home</a>
+                <a href="{{ route('jobs.index') }}">Home</a>
             </li>
         </ul>
         <ul class="flex gap-2">
             @auth
-            <li>
-                {{auth()->user()->name ?? 'Anonymus'}}
-            </li>
-            <li>
-                <form action="{{route('auth.destroy')}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button>Logout</button>
-                </form>
-            </li>
+                <li>
+                    <a href="{{ route('my-job-applications.index') }}">
+                        {{ auth()->user()->name ?? 'Anonymus' }}: Applications
+                    </a>
+                </li>
+                <li>
+                    <form action="{{ route('auth.destroy') }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button>Logout</button>
+                    </form>
+                </li>
             @else
-            <li>
-                <a href="{{route('login')}}">Sign in</a>
-            </li>
+                <li>
+                    <a href="{{ route('login') }}">Sign in</a>
+                </li>
             @endauth
         </ul>
     </nav>
 
     @if (session('success'))
-
-    <div role="alert" class="my-8 rounded-md border-l-4 border-green-300 bg-green-100 p-4 text-green-700 opacity-75">
-        <p class="font-bold">Success!</p>
-        <p>{{session('success')}}</p>
-    </div>
-
+        <div role="alert"
+            class="my-8 rounded-md border-l-4 border-green-300 bg-green-100 p-4 text-green-700 opacity-75">
+            <p class="font-bold">Success!</p>
+            <p>{{ session('success') }}</p>
+        </div>
     @endif
 
-    {{$slot}}
+    {{ $slot }}
 </body>
 
 </html>
