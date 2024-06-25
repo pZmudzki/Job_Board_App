@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('my_jobs.index') }}">
+                    <a href="{{ route('my-jobs.index') }}">
                         My Jobs
                     </a>
                 </li>
