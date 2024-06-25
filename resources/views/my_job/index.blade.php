@@ -20,8 +20,13 @@
                         <div>${{ number_format($application->expected_salary) }}</div>
                     </div>
                 @empty
-                    No applications yet.
+                    <div class="mb-4 text-center">
+                        No applications yet.
+                    </div>
                 @endforelse
+                <div class="flex gap-2">
+                    <x-link-button href="{{ route('my-jobs.edit', $job) }}">Edit</x-link-button>
+                </div>
             </div>
         </x-job-card>
     @empty
