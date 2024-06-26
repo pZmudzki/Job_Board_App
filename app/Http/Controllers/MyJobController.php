@@ -6,6 +6,7 @@ use App\Http\Requests\JobRequest;
 use Illuminate\Http\Request;
 
 use App\Models\Job;
+use Illuminate\Support\Facades\Gate;
 
 class MyJobController extends Controller
 {
@@ -14,6 +15,8 @@ class MyJobController extends Controller
      */
     public function index()
     {
+        Gate::authorize('viewAnyEmployer', Job::class);
+
         $jobs = auth()->user()->employer
             ->jobs()
             ->with(['employer', 'jobApplications', 'jobApplications.user'])
@@ -27,6 +30,8 @@ class MyJobController extends Controller
      */
     public function create()
     {
+        Gate::authorize('create', Job::class);
+
         return view('my_job.create');
     }
 
@@ -35,6 +40,8 @@ class MyJobController extends Controller
      */
     public function store(JobRequest $request)
     {
+        Gate::authorize('create', Job::class);
+
         auth()->user()->employer->jobs()->create($request->validated());
 
         return redirect()->route('my-jobs.index')
@@ -54,6 +61,8 @@ class MyJobController extends Controller
      */
     public function edit(Job $my_job)
     {
+        Gate::authorize('update', $my_job);
+
         return view('my_job.edit', ['job' => $my_job]);
     }
 
@@ -62,6 +71,8 @@ class MyJobController extends Controller
      */
     public function update(JobRequest $request, Job $my_job)
     {
+        Gate::authorize('update', $my_job);
+
         $my_job->update($request->validated());
 
         return redirect()->route('my-jobs.index')
