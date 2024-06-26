@@ -76,14 +76,17 @@ class MyJobController extends Controller
         $my_job->update($request->validated());
 
         return redirect()->route('my-jobs.index')
-            ->with('success', 'Successfully updated job: "' . $my_job->title . '"');
+            ->with('success', 'Successfully updated job: "' . $my_job->title . '".');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Job $my_job)
     {
-        //
+        $my_job->delete();
+
+        return redirect()->route('my-jobs.index')
+            ->with('success', 'Job deleted successfully!');
     }
 }
